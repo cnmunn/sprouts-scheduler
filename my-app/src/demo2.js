@@ -1,156 +1,100 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import { ViewState, EditingState, IntegratedEditing } from '@devexpress/dx-react-scheduler';
+import {
+  ViewState, EditingState, GroupingState, IntegratedGrouping, IntegratedEditing,
+} from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
-  WeekView,
   Resources,
+  WeekView,
   Appointments,
   AppointmentTooltip,
   AppointmentForm,
-  ConfirmationDialog,
+  GroupingPanel,
+  Toolbar,
+  ViewSwitcher,
+  DragDropProvider,
 } from '@devexpress/dx-react-scheduler-material-ui';
+import { blue, orange, teal, yellow, pink } from '@mui/material/colors';
 
-import appointments from './demo-data/today-appointments';
+import { data as appointments } from './demo-data/grouping';
 
-const StyledDiv = styled('div')(({ theme }) => ({
-    [`&.${classes.container}`]: {
-      display: 'flex',
-      marginBottom: theme.spacing(2),
-      justifyContent: 'flex-end',
-    },
-    [`& .${classes.text}`]: {
-      ...theme.typography.h6,
-      marginRight: theme.spacing(2),
-    },
-  }));
+const resources = [{
+  fieldName: 'initiativeId',
+  title: 'Initiative',
+  instances: [
+    { text: 'Cafe', id: 1, color: blue },
+    { text: 'Eats', id: 2, color: orange },
+    { text: 'Distro', id: 3, color: yellow },
+    { text: 'Fridge', id: 4, color: pink },
+  ],
+}];
+const groupOrientation = viewName => viewName.split(' ')[0];
+const grouping = [{
+  resourceName: 'initiativeId',
+}];
 
-  const ResourceSwitcher = (
-    ({
-      mainResourceName, onChange, resources,
-    }) => (
-      <StyledDiv className={classes.container}>
-        <div className={classes.text}>
-          Main resource name:
-        </div>
-        <Select
-          variant="standard"
-          value={mainResourceName}
-          onChange={e => onChange(e.target.value)}
-        >
-          {resources.map(resource => (
-            <MenuItem key={resource.fieldName} value={resource.fieldName}>
-              {resource.title}
-            </MenuItem>
-          ))}
-        </Select>
-      </StyledDiv>
-    )
-  );
-
-export default class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: appointments,
-      mainResourceName: 'Initiative',
-      currentDate: '2023-03-01',
-      resources: [{
-        fieldName: 'location',
-        title: 'Location',
-        instances: [
-          { id: 'Cafe', text: 'Cafe' },
-          { id: 'Eats', text: 'Eats' },
-          { id: 'Distro', text: 'Distro' },
-          { id: 'Fridge', text: 'Fridge' },
-        ],
-      },],
-    };
-
-  this.commitChanges = this.commitChanges.bind(this);
-
-  this.currentViewNameChange = (e) => {
-  this.setState({ currentViewName: e.target.value });
-  };
-
-  this.changeMainResource = this.changeMainResource.bind(this);
-  }
-
-  changeMainResource(mainResourceName) {
-    this.setState({ mainResourceName });
-  }
-
-
-commitChanges({ added, changed, deleted }) {
-  this.setState((state) => {
-    let { data } = state;
+export default () => {
+  const [data, setData] = React.useState(appointments);
+  const onCommitChanges = React.useCallback(({ added, changed, deleted }) => {
     if (added) {
       const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
-      data = [...data, { id: startingAddedId, ...added }];
+      setData([...data, { id: startingAddedId, ...added }]);
     }
     if (changed) {
-      data = data.map(appointment => (
-        changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
+      setData(data.map(appointment => (
+        changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment)));
     }
     if (deleted !== undefined) {
-      data = data.filter(appointment => appointment.id !== deleted);
+      setData(data.filter(appointment => appointment.id !== deleted));
     }
-    return { data };
-  });
-}
+  }, [setData, data]);
 
-
-  render() {
-    const { data, currentViewName, currentDate, mainResourceName } = this.state;
-
-    return (
-      <React.Fragment>
-
-        <ResourceSwitcher
-          resources={resources}
-          mainResourceName={mainResourceName}
-          onChange={this.changeMainResource}
+  return (
+    <Paper>
+      <Scheduler
+        data={data}
+        height={2000}
+      >
+        <ViewState
+          defaultCurrentDate="2018-05-30"
+        />
+        <EditingState
+          onCommitChanges={onCommitChanges}
+        />
+        <GroupingState
+          grouping={grouping}
+          groupOrientation={groupOrientation}
         />
 
-        <ExternalViewSwitcher
-          currentViewName={currentViewName}
-          onChange={this.currentViewNameChange}
+        <WeekView
+          startDayHour={9}
+          endDayHour={19}
+          cellDuration={60}
+          name="Vertical Orientation"
         />
-      <Paper>
-        <Scheduler
-          data={data}
-          height={1000}
-        >
-          <ViewState
-              defaultCurrentDate="2023-03-01"
-              currentDate={currentDate}
-              currentViewName={currentViewName}
-            />
+        {/* <WeekView
+          startDayHour={9}
+          endDayHour={19}
+          name="Horizontal Orientation"
+        /> */}
 
-          <EditingState
-            onCommitChanges={this.commitChanges}
-          />
-          <IntegratedEditing />
-          <WeekView
-            startDayHour={9}
-            endDayHour={19}
-          />
+        <Appointments />
+        <Resources
+          data={resources}
+          mainResourceName="initiativeId"
+        />
 
-          <Resources
-              data={resources}
-              mainResourceName={mainResourceName}
-            />
-          <ConfirmationDialog />
-          <Appointments />
-          <AppointmentTooltip
-            showOpenButton
-            showDeleteButton
-          />
-          <AppointmentForm/>
-        </Scheduler>
-      </Paper>
-      </React.Fragment>
-    );
-  }
-}
+        <IntegratedGrouping />
+        <IntegratedEditing />
+        <AppointmentTooltip />
+        <AppointmentForm />
+
+        <GroupingPanel />
+        <Toolbar />
+        <ViewSwitcher />
+        <DragDropProvider />
+      </Scheduler>
+    </Paper>
+  );
+};
