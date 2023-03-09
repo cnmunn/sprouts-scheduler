@@ -54,7 +54,7 @@ commitChanges({ added, changed, deleted }) {
     let { data } = state;
     if (added) {
       const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
-      data = [...data, { id: startingAddedId, ...added }];
+      data = [...data, { id: startingAddedId, ...added, tab: this.state.currentViewName }];
     }
     if (changed) {
       data = data.map(appointment => (
@@ -68,6 +68,7 @@ commitChanges({ added, changed, deleted }) {
 }
 
 
+
   render() {
     const { data, currentViewName, currentDate } = this.state;
 
@@ -78,10 +79,10 @@ commitChanges({ added, changed, deleted }) {
           onChange={this.currentViewNameChange}
         />
       <Paper>
-        <Scheduler
-          data={data}
-          height={1000}
-        >
+      <Scheduler
+  data={data.filter(appointment => appointment.tab === currentViewName)}
+  height={1000}
+>
           <ViewState
               defaultCurrentDate="2023-03-01"
               currentDate={currentDate}
