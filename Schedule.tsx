@@ -1,4 +1,5 @@
 import * as React from 'react';
+import TableCell from '@mui/material/TableCell';
 import {
   Scheduler,
   WeekView,
@@ -17,6 +18,37 @@ interface AppState {
   data: Appointment[];
   currentDate: string;
 }
+
+
+// const DayScaleCell: React.FC{DayScaleCellProps} = ({
+//   startDate,
+//   endDate,
+//   today,
+// }) => (
+//   <TableCell>
+//     <span>
+//       {Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(startDate)}
+//     </span>
+//   </TableCell>
+// );
+
+const dayScaleCell: React.FC<WeekView.DayScaleCellProps> = ({
+  startDate,
+  endDate,
+  today,
+}) => (
+  <TableCell>
+    <span       style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%"
+      }}>
+      {Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(startDate)}
+    </span>
+  </TableCell>
+);
+
 
 const appointments: Appointment[] = [
   {
@@ -56,7 +88,7 @@ class App extends React.PureComponent<{}, AppState> {
           startDayHour={8}
           endDayHour={18}
           intervalCount={1}
-          dayScaleLayoutComponent={() => null}
+          dayScaleCellComponent={dayScaleCell}
         />
         <Appointments />
         <AppointmentTooltip showCloseButton />
