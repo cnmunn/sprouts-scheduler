@@ -1156,7 +1156,7 @@
   dependencies:
     "@devexpress/dx-scheduler-core" "4.0.3"
 
-"@devexpress/dx-scheduler-core@4.0.3":
+"@devexpress/dx-scheduler-core@4.0.3", "@devexpress/dx-scheduler-core@^4.0.3":
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@devexpress/dx-scheduler-core/-/dx-scheduler-core-4.0.3.tgz#49ac6780007d3db4e1673bc8c0c87ddb0c3e7de2"
   integrity sha512-RpMStEwIRTjs6qfKDg0lkZ6tahrhDxNl1NpYBkMTfxDRknT2p+VJd9UlmhQ/e2g6FbYBeY3RZFNxF3OVJ9tO5A==
