@@ -67,16 +67,16 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Demo shiftTimes={cafeShiftTimes} shiftTimesCallback={shiftTimesCallback}/>
+        <Demo shiftTimes={cafeShiftTimes.filter(l => l.location === 'Cafe')} shiftTimesCallback={shiftTimesCallback}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Demo />
+      <Demo shiftTimes={cafeShiftTimes.filter(l => l.location === 'Fridge')} shiftTimesCallback={shiftTimesCallback}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Demo />
+      <Demo shiftTimes={cafeShiftTimes.filter(l => l.location === 'Distro')} shiftTimesCallback={shiftTimesCallback}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Demo />
+      <Demo shiftTimes={cafeShiftTimes.filter(l => l.location === 'Eats')} shiftTimesCallback={shiftTimesCallback}/>
       </TabPanel>
     </Box>
     </Container>
