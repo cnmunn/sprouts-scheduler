@@ -15,6 +15,8 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Button } from '@mui/material';
 
+import {appointments as appointmentData} from './demo-data/appointments.js';
+
 const dayScaleCell = ({ startDate, endDate, today }) => (
   <TableCell>
     <span style={{
@@ -55,7 +57,7 @@ const StyledAppointmentTooltipHeader = styled(AppointmentTooltip.Header)(() => (
     background: './demo-data/imgs/Eats.png',
   },
   [`&.${classes.header}`]: {
-    height: '260px',
+    height: '0px', //260px
     backgroundSize: 'cover',
   },
 }));
@@ -121,9 +123,6 @@ const Content = (({
         <StyledRoom className={classes.icon} />
       </StyledGrid>
       <Grid item xs={10}>
-        <span>{appointmentData.location}</span>
-      </Grid>
-      <Grid item xs={10}>
         <Button variant="outlined" onClick={handleShiftSignup(appointmentData)}>Sign-Up</Button>
       </Grid>
     </Grid>
@@ -167,14 +166,14 @@ export default class Demo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      data: this.props.shiftTimes,
+      data: appointmentData,
       parentCallback: this.props.shiftTimesCallback
     };
   };
 
   render() {
     const { data } = this.state;
-    const {parentCallback} = this.state;
+    // const {parentCallback} = this.state;
 
     return (
       <Paper>
@@ -186,13 +185,14 @@ export default class Demo extends React.PureComponent {
             dayScaleCellComponent={dayScaleCell}
           />
           
-          <Appointments/>
+          <Appointments appointmentComponent={Appointment}/>
           <AppointmentTooltip
           contentComponent={Content}
           headerComponent={Header}
           commandButtonComponent={CommandButton}
           showCloseButton
           />
+
         </Scheduler>
       </Paper>
     );

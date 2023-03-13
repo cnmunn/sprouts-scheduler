@@ -5,7 +5,6 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Demo from './demo';
-import Demo2 from './demo2';
 import Container from '@mui/material/Container';
 
 import {appointments as cafeShiftTimes} from './demo-data/appointments.js';
