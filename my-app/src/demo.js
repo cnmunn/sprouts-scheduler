@@ -14,6 +14,7 @@ import {
   AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Button } from '@mui/material';
+import BasicList from './selected_shifts'
 
 const dayScaleCell = ({ startDate, endDate, today }) => (
   <TableCell>
@@ -103,7 +104,7 @@ const Header = (({
   >
     <StyledIconButton
       /* eslint-disable-next-line no-alert */
-      onClick={() => alert(JSON.stringify(appointmentData))}
+      onClick={() => alert("Shift Leader: Jess")}
       className={classes.commandButton}
       size="large"
     >
@@ -114,7 +115,12 @@ const Header = (({
 
 const Content = (({
   children, appointmentData, ...restProps
-}) => (
+}) => {
+  const handleSignUpClick = () => {
+    handleShiftSignup(appointmentData);
+  };
+  
+  return(
   <AppointmentTooltip.Content {...restProps} appointmentData={appointmentData}>
     <Grid container alignItems="center">
     <StyledGrid item xs={2} className={classes.textCenter}>
@@ -124,11 +130,11 @@ const Content = (({
         <span>{appointmentData.location}</span>
       </Grid>
       <Grid item xs={10}>
-        <Button variant="outlined" onClick={handleShiftSignup(appointmentData)}>Sign-Up</Button>
+        <Button variant="outlined" onClick={handleSignUpClick}>Sign-Up</Button>
       </Grid>
     </Grid>
   </AppointmentTooltip.Content>
-));
+)});
 
 const CommandButton = (({
   ...restProps
@@ -139,7 +145,8 @@ const CommandButton = (({
 const handleShiftSignup = (({
   appointmentData
 }) => (
-  console.log(appointmentData)
+  console.log(appointmentData),
+  alert("Signed Up!")
 ));
 
 export default class Demo extends React.PureComponent {
@@ -157,6 +164,8 @@ export default class Demo extends React.PureComponent {
 
     return (
       <Paper>
+        <BasicList>
+        </BasicList>
       <Scheduler data={data} height={1000}>
           <WeekView
             name="Cafe"
