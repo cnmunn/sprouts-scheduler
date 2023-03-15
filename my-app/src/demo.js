@@ -14,6 +14,7 @@ import {
   AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Button } from '@mui/material';
+import Logo from "./Logo"
 import BasicList from './selected_shifts'
 
 const dayScaleCell = ({ startDate, endDate, today }) => (
@@ -164,6 +165,7 @@ export default class Demo extends React.PureComponent {
 
     return (
       <Paper>
+        <Logo></Logo>
         <BasicList>
         </BasicList>
       <Scheduler data={data} height={1000}>
