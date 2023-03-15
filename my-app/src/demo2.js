@@ -18,7 +18,7 @@ import {
 import { Button } from '@mui/material';
 import BasicList from './selected_shifts'
 
-import {appointments as appointmentData} from './demo-data/appointments2.js';
+import {appointments as appointmentData} from './demodata/appointments2.js';
 
 const dayScaleCell = ({ startDate, endDate, today }) => (
   <TableCell>
@@ -48,19 +48,19 @@ const classes = {
 
 const StyledAppointmentTooltipHeader = styled(AppointmentTooltip.Header)(() => ({
   [`${classes.firstRoom}`]: {
-    background: 'url(https://random.dog/d4145aec-cb32-444b-8ea9-3e64b2076b60.jpg)',
+    background: `./demodata/imgs/Cafe.png`,
   },
   [`&.${classes.secondRoom}`]: {
-    background: './demo-data/imgs/Fridge.png',
+    background: './demodata/imgs/Fridge.png',
   },
   [`&.${classes.thirdRoom}`]: {
-    background: './demo-data/imgs/Distro.png',
+    background: './demodata/imgs/Distro.png',
   },
   [`&.${classes.fourthRoom}`]: {
-    background: './demo-data/imgs/Eats.png',
+    background: './demodata/imgs/Eats.png',
   },
   [`&.${classes.header}`]: {
-    height: '0px', //260px
+    height: '260px', //260px
     backgroundSize: 'cover',
   },
   

@@ -49,13 +49,13 @@ const StyledAppointmentTooltipHeader = styled(AppointmentTooltip.Header)(() => (
     background: 'url(https://random.dog/d4145aec-cb32-444b-8ea9-3e64b2076b60.jpg)',
   },
   [`&.${classes.secondRoom}`]: {
-    background: './demo-data/imgs/Fridge.png',
+    background: './demodata/imgs/Fridge.png',
   },
   [`&.${classes.thirdRoom}`]: {
-    background: './demo-data/imgs/Distro.png',
+    background: './demodata/imgs/Distro.png',
   },
   [`&.${classes.fourthRoom}`]: {
-    background: './demo-data/imgs/Eats.png',
+    background: './demodata/imgs/Eats.png',
   },
   [`&.${classes.header}`]: {
     height: '0px', // 260px

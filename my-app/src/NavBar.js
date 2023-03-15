@@ -8,17 +8,17 @@ import Image from "@mui/icons-material/Image"
   
 export default function NavBar() {
   return (
-      <AppBar style={{ background: '#7f7f7f' }} position="static">
+      <AppBar style={{ background: '#D9D9D9', border: "solid", borderWidth: "1px", borderColor: "black" }} position="static">
         <Toolbar>
-         <Image
+         {/* <Image
             style={{ width: 50, height: 50, padding: 20}}
-            source={{src:require('./demo-data/imgs/Logo.png')}}
-            />
-          <Typography variant="h6" 
+            source={{src:require('./demodata/imgs/Logo.png')}}
+            /> */}
+          <Typography style={{color: "black"}} variant="h6" 
             component="div" sx={{ flexGrow: 1 }}>
-            Sprouts Scheduler
+            OLIVIA'S CALENDAR
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button style={{color: "black "}}color="inherit">Log out</Button>
         </Toolbar>
       </AppBar>
   );

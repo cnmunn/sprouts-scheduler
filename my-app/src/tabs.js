@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Demo from './demo';
 import Container from '@mui/material/Container';
 
-import {appointments as cafeShiftTimes} from './demo-data/appointments.js';
+import {appointments as cafeShiftTimes} from './demodata/appointments.js';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
