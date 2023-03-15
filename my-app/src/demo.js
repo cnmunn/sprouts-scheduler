@@ -14,6 +14,7 @@ import {
   AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Button } from '@mui/material';
+import NavBar from "./NavBar"
 import Logo from "./Logo"
 import BasicList from './selected_shifts'
 
@@ -166,6 +167,7 @@ export default class Demo extends React.PureComponent {
     return (
       <Paper>
         <Logo></Logo>
+        <NavBar></NavBar>
         <BasicList>
         </BasicList>
       <Scheduler data={data} height={1000}>

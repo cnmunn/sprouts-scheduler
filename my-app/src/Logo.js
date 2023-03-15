@@ -5,21 +5,17 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Image from "@mui/icons-material/Image"
-  
+
 export default function Logo() {
-  return (
-      <AppBar style={{ background: '#7f7f7f' }} position="static">
-        <Toolbar>
-         <Image
-            style={{ width: 50, height: 50, padding: 20}}
-            source={{uri:'/demo-data/imgs/Logo.png'}}
+    return (
+      <AppBar style={{background: '#ffffff' }} position="static">
+          <Image
+            img src={require('./demo-data/imgs/Logo.png')} alt="logo"
+            height={100}
+            width={100}
+            style={{ alignSelf: 'center' }}
             />
-          <Typography variant="h6" 
-            component="div" sx={{ flexGrow: 1 }}>
-            Sprouts Scheduler
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
+        {/* <img style={{display: "flex", width: "100px", height: "100px",}}src={require('./demo-data/imgs/Logo.png')} /> */}
       </AppBar>
   );
-}
+  }

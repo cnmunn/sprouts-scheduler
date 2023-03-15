@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import classNames from 'clsx';
+import NavBar from "./NavBar"
 import Logo from "./Logo"
 import {
   Scheduler,
@@ -187,6 +188,7 @@ export default class Demo extends React.PureComponent {
     return (
       <Paper>
          <Logo></Logo>
+         <NavBar></NavBar>
         {/* <BasicList>
         </BasicList> */}
       <Scheduler data={data} height={1000}>
