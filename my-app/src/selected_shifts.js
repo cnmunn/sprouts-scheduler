@@ -19,10 +19,10 @@ export default function BasicList() {
         <nav aria-label="selected_shifts">
           <List>
             <ListItem disablePadding>
-                <ListItemText primary="Cafe: Monday 11-1PM" />
+                <ListItemText primary="---------" />
             </ListItem>
             <ListItem disablePadding>
-                <ListItemText primary="Cafe: Thursday 3-5PM" />
+                <ListItemText primary="---------" />
             </ListItem>
           </List>
         </nav>

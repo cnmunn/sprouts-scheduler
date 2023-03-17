@@ -145,12 +145,17 @@ const CommandButton = (({
   <StyledAppointmentTooltipCommandButton {...restProps} className={classes.commandButton} />
 ));
 
-const handleShiftSignup = (({
-  appointmentData
-}) => (
-  console.log(appointmentData),
-  alert("Signed Up!")
-));
+const handleShiftSignup = ({ appointmentData }) => {
+  console.log(appointmentData);
+
+  if (appointmentData.selected) {
+    appointmentData.selected = false;
+  } else {
+    appointmentData.selected = true;
+  }
+  alert("Signed Up!");
+};
+
 
 const getColorByLocation = (location) => {
     if (location === 'Cafe') return '#81D1FF';
@@ -167,7 +172,7 @@ const Appointment = ({
       style={{
         ...style,
         backgroundColor: getColorByLocation(data.location),
-        data: data
+        data: data,
       }}
     >
       {children}
