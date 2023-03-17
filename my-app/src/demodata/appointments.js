@@ -107,8 +107,8 @@ export const appointments = [
     {
       title: 'Shift',
       location: 'Distro',
-      startDate: new Date(2022, 5, 25, 14, 0),
-      endDate: new Date(2022, 5, 25, 16, 0),
+      startDate: new Date(2022, 5, 22, 14, 0),
+      endDate: new Date(2022, 5, 22, 16, 0),
       rRule: 'FREQ=WEEKLY'
     },
     {

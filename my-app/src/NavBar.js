@@ -16,7 +16,7 @@ export default function NavBar() {
             /> */}
           <Typography style={{color: "black"}} variant="h6" 
             component="div" sx={{ flexGrow: 1 }}>
-            OLIVIA'S CALENDAR
+            USER'S CALENDAR
           </Typography>
           <Button style={{color: "black "}}color="inherit">Log out</Button>
         </Toolbar>

@@ -7,7 +7,7 @@ import Divider from '@mui/material/Divider';
 export default function BasicList() {
 
     return (
-      <Box sx={{ padding: '15px', width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <Box sx={{margin: '15px', padding: '15px', width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
         <nav aria-label="title">
           <List>
             <ListItem disablePadding>

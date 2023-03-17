@@ -6,6 +6,7 @@ import Room from '@mui/icons-material/Room';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import SendIcon from '@mui/icons-material/Send';
 import classNames from 'clsx';
 import {
   Scheduler,
@@ -45,17 +46,17 @@ const classes = {
 };
 
 const StyledAppointmentTooltipHeader = styled(AppointmentTooltip.Header)(() => ({
-  [`${classes.firstRoom}`]: {
+  [`&.${classes.firstRoom}`]: {
     background: 'url(https://random.dog/d4145aec-cb32-444b-8ea9-3e64b2076b60.jpg)',
   },
   [`&.${classes.secondRoom}`]: {
-    background: './demodata/imgs/Fridge.png',
+    background: './imgs/Fridge.png',
   },
   [`&.${classes.thirdRoom}`]: {
-    background: './demodata/imgs/Distro.png',
+    background: './imgs/Distro.png',
   },
   [`&.${classes.fourthRoom}`]: {
-    background: './demodata/imgs/Eats.png',
+    background: './imgs/Eats.png',
   },
   [`&.${classes.header}`]: {
     height: '0px', // 260px
@@ -170,6 +171,12 @@ export default class Demo extends React.PureComponent {
         <NavBar></NavBar>
         <BasicList>
         </BasicList>
+        <Button onClick={() => {
+          alert('Submitted!');}}
+          style={{marginLeft: "25px", marginBottom: "25px", background: "black"}} variant="contained" endIcon={<SendIcon />}>
+          SUBMIT SHIFTS
+        </Button>
+
       <Scheduler data={data} height={1000}>
           <WeekView
             name="Cafe"
@@ -187,6 +194,8 @@ export default class Demo extends React.PureComponent {
           />
         </Scheduler>
       </Paper>
+
+      
     );
   }
 }

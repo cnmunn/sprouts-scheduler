@@ -6,6 +6,7 @@ import Room from '@mui/icons-material/Room';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import SendIcon from '@mui/icons-material/Send';
 import classNames from 'clsx';
 import NavBar from "./NavBar"
 import Logo from "./Logo"
@@ -60,7 +61,7 @@ const StyledAppointmentTooltipHeader = styled(AppointmentTooltip.Header)(() => (
     background: './demodata/imgs/Eats.png',
   },
   [`&.${classes.header}`]: {
-    height: '260px', //260px
+    height: '0px', //260px
     backgroundSize: 'cover',
   },
   
@@ -189,8 +190,20 @@ export default class Demo extends React.PureComponent {
       <Paper>
          <Logo></Logo>
          <NavBar></NavBar>
-        {/* <BasicList>
-        </BasicList> */}
+
+        <BasicList>
+        </BasicList>
+
+        <Button onClick={() => {
+          alert('Submitted!');}}
+          style={{marginLeft: "25px", marginBottom: "25px", background: "black"}} variant="contained" endIcon={<SendIcon />}>
+          SUBMIT SHIFTS
+        </Button>
+
+        <form ref="form" onSubmit={this.handleSubmit}>
+         <button type="submit">SUBMIT SHIFTS</button>
+        </form>
+
       <Scheduler data={data} height={1000}>
           <WeekView
             name="Cafe"
