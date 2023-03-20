@@ -18,6 +18,8 @@ import { Button } from '@mui/material';
 import NavBar from "./NavBar"
 import Logo from "./Logo"
 import BasicList from './selected_shifts'
+import ShiftBox from './ShiftBox'
+import SignUp from './SignUp'
 
 const dayScaleCell = ({ startDate, endDate, today }) => (
   <TableCell>
@@ -148,8 +150,7 @@ const CommandButton = (({
 const handleShiftSignup = (({
   appointmentData
 }) => (
-  console.log(appointmentData),
-  alert("Signed Up!")
+  console.log(appointmentData)
 ));
 
 export default class Demo extends React.PureComponent {
@@ -157,13 +158,17 @@ export default class Demo extends React.PureComponent {
     super(props);
     this.state = {
       data: this.props.shiftTimes,
-      parentCallback: this.props.shiftTimesCallback
+      parentCallback: this.props.shiftTimesCallback,
+      appointments: []
     };
   };
 
+
+
   render() {
     const { data } = this.state;
-    const {parentCallback} = this.state;
+    const {appointments} = this.state;
+    
 
     return (
       <Paper>
@@ -185,13 +190,9 @@ export default class Demo extends React.PureComponent {
             dayScaleCellComponent={dayScaleCell}
           />
           
-          <Appointments/>
-          <AppointmentTooltip
-          contentComponent={Content}
-          headerComponent={Header}
-          commandButtonComponent={CommandButton}
-          showCloseButton
-          />
+          <ShiftBox></ShiftBox>
+          <SignUp>
+          </SignUp>
         </Scheduler>
       </Paper>
 
