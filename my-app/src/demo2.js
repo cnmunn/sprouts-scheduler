@@ -170,10 +170,10 @@ const Appointment = ({
   }) => (
     <Appointments.Appointment
       {...restProps}
+      data={data}
       style={{
         ...style,
         backgroundColor: getColorByLocation(data.location),
-        data: data,
       }}
     >
       {children}

@@ -12,6 +12,7 @@ import {
   Scheduler,
   WeekView,
   AppointmentTooltip,
+  Appointments,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Button } from '@mui/material';
 import NavBar from "./NavBar"
@@ -19,6 +20,7 @@ import Logo from "./Logo"
 import BasicList from './selected_shifts'
 import ShiftBox from './ShiftBox'
 import SignUp from './SignUp'
+import {appointments as appointmentData} from './demodata/appointments2.js';
 
 const dayScaleCell = ({ startDate, endDate, today }) => (
   <TableCell>
@@ -154,9 +156,29 @@ const Header = (({
 
 
 export default function Demo (props) {
-  const [data, setData] = useState(props.shiftTimes);
+  const [data, setData] = useState(appointmentData);
   const [signedUpAppointments, setSignedUpAppointments] = useState([]);
+  const getColorByLocation = (location) => {
+    if (location === 'Cafe') return '#81D1FF';
+    if (location === 'Fridge') return '#ED81FF';
+    if (location === 'Distro') return '#FFC83A';
+    return '#4DD84A';
+  };
 
+const Appointment = ({
+    children, style, data, ...restProps
+  }) => (
+    <Appointments.Appointment
+      {...restProps}
+      data={data}
+      style={{
+        ...style,
+        backgroundColor: getColorByLocation(data.location),
+      }}
+    >
+      {children}
+    </Appointments.Appointment>
+  );
   
   return (
     <Paper>
@@ -177,7 +199,7 @@ export default function Demo (props) {
           dayScaleCellComponent={dayScaleCell}
         />
         
-        <ShiftBox signedUpAppointments={signedUpAppointments}></ShiftBox>
+        <ShiftBox signedUpAppointments={signedUpAppointments} appComp={Appointment}></ShiftBox>
         <SignUp signedUpAppointments={signedUpAppointments} setSignedUpAppointments={setSignedUpAppointments}>
         </SignUp>
       </Scheduler>
