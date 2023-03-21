@@ -9,7 +9,7 @@ export default function SignUp ({signedUpAppointments, setSignedUpAppointments})
   
     const handleSignUp = (appointmentData) => {
       // perform sign-up logic
-      const signedUpAppointment = appointments.find((appointment) => appointment.id === 1);
+      const signedUpAppointment = appointments.find((appointment) => appointment.id === appointmentData.id);
       setSignedUpAppointments((prev) => {
           return [...prev, signedUpAppointment];
       })
