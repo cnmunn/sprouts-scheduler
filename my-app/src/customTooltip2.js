@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AppointmentTooltip } from "@devexpress/dx-react-scheduler-material-ui";
 import Button from "@mui/material/Button";
 
-const CustomAppointmentTooltip = ({
+const CustomAppointmentTooltip2 = ({
   appointmentData,
   onSignUp,
   signedUpAppointments,
@@ -14,6 +14,7 @@ const CustomAppointmentTooltip = ({
     onSignUp(appointmentData);
   };
   
+
   const tooltipStyle = {
     backgroundColor: isSignedUp ? "#7ec699" : "#e4f0f6",
     color: isSignedUp ? "#fff" : "#333",
@@ -31,8 +32,8 @@ const CustomAppointmentTooltip = ({
         {!isSignedUp ? (
           <div>
             <div>{appointmentData.title}</div>
-            <div>{appointmentData.startDate.toLocaleString()}</div>
-            <div>{appointmentData.endDate.toLocaleString()}</div>
+            <div>{appointmentData.startDate}</div>
+            <div>{appointmentData.endDate}</div>
             <Button
               variant="contained"
               color="primary"
@@ -52,4 +53,4 @@ const CustomAppointmentTooltip = ({
   );
 };
 
-export default CustomAppointmentTooltip;
+export default CustomAppointmentTooltip2;

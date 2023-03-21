@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import TableCell from '@mui/material/TableCell';
 import Grid from '@mui/material/Grid';
@@ -18,7 +18,8 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Button } from '@mui/material';
 import BasicList from './selected_shifts'
-
+import ShiftBox2 from './ShiftBox2'
+import SignUp2 from './SignUp2'
 import {appointments as appointmentData} from './demodata/appointments2.js';
 
 const dayScaleCell = ({ startDate, endDate, today }) => (
@@ -178,36 +179,20 @@ const Appointment = ({
       {children}
     </Appointments.Appointment>
   );
-export default class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: appointmentData,
-      parentCallback: this.props.shiftTimesCallback
-    };
-  };
-
-  render() {
-    const { data } = this.state;
-    // const {parentCallback} = this.state;
+export default function Demo () {
+  const [data, setData] = useState(appointmentData);
+  const [signedUpAppointments, setSignedUpAppointments] = useState([]);
 
     return (
       <Paper>
          <Logo></Logo>
          <NavBar></NavBar>
-
-        <BasicList>
-        </BasicList>
-
+        <BasicList></BasicList>
         <Button onClick={() => {
           alert('Submitted!');}}
           style={{marginLeft: "25px", marginBottom: "25px", background: "black"}} variant="contained" endIcon={<SendIcon />}>
           SUBMIT SHIFTS
         </Button>
-
-        <form ref="form" onSubmit={this.handleSubmit}>
-         <button type="submit">SUBMIT SHIFTS</button>
-        </form>
 
       <Scheduler data={data} height={1000}>
           <WeekView
@@ -217,16 +202,11 @@ export default class Demo extends React.PureComponent {
             dayScaleCellComponent={dayScaleCell}
           />
           
-          <Appointments appointmentComponent={Appointment}/>
-          <AppointmentTooltip
-          contentComponent={Content}
-          headerComponent={Header}
-          commandButtonComponent={CommandButton}
-          showCloseButton
-          />
+          <ShiftBox2 signedUpAppointments={signedUpAppointments} appointment={Appointment}></ShiftBox2>
+          <SignUp2 signedUpAppointments={signedUpAppointments} setSignedUpAppointments={setSignedUpAppointments}></SignUp2>
 
         </Scheduler>
       </Paper>
     );
   }
-}
+

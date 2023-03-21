@@ -1,143 +1,163 @@
 export const appointments = [
     {
       title: 'Cafe',
+      id: 1,
       location: 'Cafe',
       startDate: new Date(2022, 5, 20, 11, 0),
       endDate: new Date(2022, 5, 20, 13, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Cafe',
+      id: 2,
       location: 'Cafe',
       startDate: new Date(2022, 5, 20, 13, 30),
       endDate: new Date(2022, 5, 20, 15, 30),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Cafe',
+      id: 3,
       location: 'Cafe',
       startDate: new Date(2022, 5, 21, 9, 30),
       endDate: new Date(2022, 5, 21, 11, 30),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Cafe',
+      id:4,
       location: 'Cafe',
       startDate: new Date(2022, 5, 22, 9, 30),
       endDate: new Date(2022, 5, 22, 11, 30),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Cafe',
+      id:5,
       location: 'Cafe',
       startDate: new Date(2022, 5, 23, 15, 0),
       endDate: new Date(2022, 5, 23, 17, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Cafe',
+      id:6,
       location: 'Cafe',
       startDate: new Date(2022, 5, 24, 9, 30),
       endDate: new Date(2022, 5, 24, 11, 30),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Fridge',
+      id:7,
       location: 'Fridge',
       startDate: new Date(2022, 5, 20, 9, 30),
       endDate: new Date(2022, 5, 20, 11, 30),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Fridge',
+      id:8,
       location: 'Fridge',
       startDate: new Date(2022, 5, 20, 13, 30),
       endDate: new Date(2022, 5, 20, 15, 30),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Fridge',
+      id:9,
       location: 'Fridge',
       startDate: new Date(2022, 5, 21, 18, 0),
       endDate: new Date(2022, 5, 21, 20, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Fridge',
+      id:10,
       location: 'Fridge',
       startDate: new Date(2022, 5, 22, 13, 30),
       endDate: new Date(2022, 5, 22, 15, 30),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Fridge',
+      id:11,
       location: 'Fridge',
       startDate: new Date(2022, 5, 23, 9, 30),
       endDate: new Date(2022, 5, 23, 11, 30),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Fridge',
+      id:12,
       location: 'Fridge',
       startDate: new Date(2022, 5, 24, 9, 30),
       endDate: new Date(2022, 5, 24, 11, 30),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Distro',
+      id:13,
       location: 'Distro',
       startDate: new Date(2022, 5, 19, 10, 0),
       endDate: new Date(2022, 5, 19, 12, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Shift',
+      id:14,
       location: 'Distro',
       startDate: new Date(2022, 5, 22, 14, 0),
       endDate: new Date(2022, 5, 22, 16, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Distro',
+      id:15,
       location: 'Distro',
       startDate: new Date(2022, 5, 19, 11, 0),
       endDate: new Date(2022, 5, 19, 13, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Distro',
+      id:16,
       location: 'Distro',
       startDate: new Date(2022, 5, 25, 10, 0),
       endDate: new Date(2022, 5, 25, 12, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Distro',
+      id:17,
       location: 'Distro',
       startDate: new Date(2022, 5, 22, 14, 0),
       endDate: new Date(2022, 5, 22, 16, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Eats',
+      id:18,
       location: 'Eats',
       startDate: new Date(2022, 5, 24, 9, 0),
       endDate: new Date(2022, 5, 24, 11, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Eats',
+      id:19,
       location: 'Eats',
       startDate: new Date(2022, 5, 24, 12, 0),
       endDate: new Date(2022, 5, 24, 14, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
     {
       title: 'Eats',
+      id:20,
       location: 'Eats',
       startDate: new Date(2022, 5, 24, 14, 0),
       endDate: new Date(2022, 5, 24, 16, 0),
-      rRule: 'FREQ=WEEKLY'
+      rRule: 'FREQ=WEEKLY',
     },
 
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from "react";
 import Paper from '@mui/material/Paper';
 import TableCell from '@mui/material/TableCell';
 import Grid from '@mui/material/Grid';
@@ -11,7 +11,6 @@ import classNames from 'clsx';
 import {
   Scheduler,
   WeekView,
-  Appointments,
   AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Button } from '@mui/material';
@@ -118,85 +117,73 @@ const Header = (({
   </StyledAppointmentTooltipHeader>
 ));
 
-const Content = (({
-  children, appointmentData, ...restProps
-}) => {
-  const handleSignUpClick = () => {
-    handleShiftSignup(appointmentData);
-  };
+// const Content = (({
+//   children, appointmentData, ...restProps
+// }) => {
+//   const handleSignUpClick = () => {
+//     handleShiftSignup(appointmentData);
+//   };
   
-  return(
-  <AppointmentTooltip.Content {...restProps} appointmentData={appointmentData}>
-    <Grid container alignItems="center">
-    <StyledGrid item xs={2} className={classes.textCenter}>
-        <StyledRoom className={classes.icon} />
-      </StyledGrid>
-      <Grid item xs={10}>
-        <span>{appointmentData.location}</span>
-      </Grid>
-      <Grid item xs={10}>
-        <Button variant="outlined" onClick={handleSignUpClick}>Sign-Up</Button>
-      </Grid>
-    </Grid>
-  </AppointmentTooltip.Content>
-)});
+//   return(
+//   <AppointmentTooltip.Content {...restProps} appointmentData={appointmentData}>
+//     <Grid container alignItems="center">
+//     <StyledGrid item xs={2} className={classes.textCenter}>
+//         <StyledRoom className={classes.icon} />
+//       </StyledGrid>
+//       <Grid item xs={10}>
+//         <span>{appointmentData.location}</span>
+//       </Grid>
+//       <Grid item xs={10}>
+//         <Button variant="outlined" onClick={handleSignUpClick}>Sign-Up</Button>
+//       </Grid>
+//     </Grid>
+//   </AppointmentTooltip.Content>
+// )});
 
-const CommandButton = (({
-  ...restProps
-}) => (
-  <StyledAppointmentTooltipCommandButton {...restProps} className={classes.commandButton} />
-));
+// const CommandButton = (({
+//   ...restProps
+// }) => (
+//   <StyledAppointmentTooltipCommandButton {...restProps} className={classes.commandButton} />
+// ));
 
-const handleShiftSignup = (({
-  appointmentData
-}) => (
-  console.log(appointmentData)
-));
-
-export default class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: this.props.shiftTimes,
-      parentCallback: this.props.shiftTimesCallback,
-      appointments: []
-    };
-  };
+// const handleShiftSignup = (({
+//   appointmentData
+// }) => (
+//   console.log(appointmentData)
+// ));
 
 
+export default function Demo (props) {
+  const [data, setData] = useState(props.shiftTimes);
+  const [signedUpAppointments, setSignedUpAppointments] = useState([]);
 
-  render() {
-    const { data } = this.state;
-    const {appointments} = this.state;
+  
+  return (
+    <Paper>
+      <Logo></Logo>
+      <NavBar></NavBar>
+      <BasicList></BasicList>
+      <Button onClick={() => {
+        alert('Submitted!');}}
+        style={{marginLeft: "25px", marginBottom: "25px", background: "black"}} variant="contained" endIcon={<SendIcon />}>
+        SUBMIT SHIFTS
+      </Button>
+
+    <Scheduler data={data} height={1000}>
+        <WeekView
+          name="Cafe"
+          startDayHour={9}
+          endDayHour={20}
+          dayScaleCellComponent={dayScaleCell}
+        />
+        
+        <ShiftBox signedUpAppointments={signedUpAppointments}></ShiftBox>
+        <SignUp signedUpAppointments={signedUpAppointments} setSignedUpAppointments={setSignedUpAppointments}>
+        </SignUp>
+      </Scheduler>
+    </Paper>
+
     
-
-    return (
-      <Paper>
-        <Logo></Logo>
-        <NavBar></NavBar>
-        <BasicList>
-        </BasicList>
-        <Button onClick={() => {
-          alert('Submitted!');}}
-          style={{marginLeft: "25px", marginBottom: "25px", background: "black"}} variant="contained" endIcon={<SendIcon />}>
-          SUBMIT SHIFTS
-        </Button>
-
-      <Scheduler data={data} height={1000}>
-          <WeekView
-            name="Cafe"
-            startDayHour={9}
-            endDayHour={20}
-            dayScaleCellComponent={dayScaleCell}
-          />
-          
-          <ShiftBox></ShiftBox>
-          <SignUp>
-          </SignUp>
-        </Scheduler>
-      </Paper>
-
-      
-    );
-  }
+  );
 }
+

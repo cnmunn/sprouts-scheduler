@@ -3,7 +3,7 @@ import {
   Appointments,
 } from "@devexpress/dx-react-scheduler-material-ui";
 
-export default function ShiftBox ({signedUpAppointments}){
+export default function ShiftBox2 ({signedUpAppointments, appointment}){
 
     const appointmentContent = ({ data }) => {
       const isSignedUp = signedUpAppointments.some(
@@ -14,7 +14,7 @@ export default function ShiftBox ({signedUpAppointments}){
     };
   
     return (
-        <Appointments appointmentContentComponent={appointmentContent} />
+        <Appointments appointmentComponent={appointment} appointmentContentComponent={appointmentContent} />
     );
   };
   
