@@ -184,10 +184,10 @@ const Appointment = ({
     <Paper>
       <Logo></Logo>
       <NavBar></NavBar>
-      <BasicList></BasicList>
+      {/* <BasicList></BasicList> */}
       <Button onClick={() => {
         alert('Submitted!');}}
-        style={{marginLeft: "25px", marginBottom: "25px", background: "black"}} variant="contained" endIcon={<SendIcon />}>
+        style={{marginLeft: "25px", marginTop: "25px", marginBottom: "25px", background: "black"}} variant="contained" endIcon={<SendIcon />}>
         SUBMIT SHIFTS
       </Button>
 
