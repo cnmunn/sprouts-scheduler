@@ -32,7 +32,7 @@ export const appointments = [
       id: 3
     },
     {
-      title: 'Shift',
+      title: 'Cafe',
       location: 'Cafe',
       startDate: new Date(2022, 5, 21, 9, 0),
       endDate: new Date(2022, 5, 21, 11, 0),
