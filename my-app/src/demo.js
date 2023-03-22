@@ -162,7 +162,7 @@ export default function Demo (props) {
     <Paper>
       <Logo></Logo>
       <NavBar></NavBar>
-      {/* <BasicList></BasicList> */}
+      <BasicList signedUpAppointments={signedUpAppointments}></BasicList>
       <Button onClick={() => {
         alert('Submitted!');}}
         style={{marginLeft: "25px", marginTop: "25px", marginBottom: "25px", background: "black"}} variant="contained" endIcon={<SendIcon />}>
