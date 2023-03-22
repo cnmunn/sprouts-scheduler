@@ -58,12 +58,12 @@ export default function BasicTabs() {
     <Container maxWidth="md">
     <Box sx={{ width: '100%'}}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        {/* <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Café" {...a11yProps(0)} />
           <Tab label="Fridge" {...a11yProps(1)} />
           <Tab label="Distro" {...a11yProps(2)} />
           <Tab label="Community Eats" {...a11yProps(3)} />
-        </Tabs>
+        </Tabs> */}
       </Box>
       <TabPanel value={value} index={0}>
         <Demo shiftTimes={cafeShiftTimes.filter(l => l.location === 'Cafe')} shiftTimesCallback={shiftTimesCallback}/>
